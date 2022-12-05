@@ -17,11 +17,6 @@ playBtn?.addEventListener("click", function () {
   else videoOne.pause();
 });
 
-//open modal
-// const openModal = function () {
-//   modal.classList.remove("hide");
-//   overlay.classList.remove("hide");
-// };
 
 const showCloseModal = function () {
   modal.classList.toggle("hide");
@@ -37,27 +32,21 @@ const closeModal = function () {
 navToggle.addEventListener("click", showCloseModal);
 overlay.addEventListener("click", closeModal);
 
-// navToggleBtns.forEach(function (btn) {
-//   btn.addEventListener("click", showCloseModal);
-// });
 
-// .addEventListener("click", showCloseModal);
-// overlay.addEventListener("click", closeModal);
+//add cookies msg
+const cookiesMsg = document.createElement("div");
+cookiesMsg.classList.add("cookies-msg");
+cookiesMsg.innerHTML =
+  "This website uses cookies for improved functionality <br> <button class= 'cookies-msg-btn'>Ok</button>";
 
-// //add cookies msg
-// const cookiesMsg = document.createElement("div");
-// cookiesMsg.classList.add("cookies-msg");
-// cookiesMsg.innerHTML =
-//   "This website uses cookies for improved functionality <br> <button class= 'cookies-msg-btn'>Ok</button>";
+// cookiesMsg.append(primaryHeader);
+body.append(cookiesMsg);
+console.log(cookiesMsg);
 
-// // cookiesMsg.append(primaryHeader);
-// body.append(cookiesMsg);
-// console.log(cookiesMsg);
-
-// const cookies_msg_btn = document.querySelector(".cookies-msg-btn");
-// cookies_msg_btn.addEventListener("click", function () {
-//   cookiesMsg.classList.add("hide");
-// });
+const cookies_msg_btn = document.querySelector(".cookies-msg-btn");
+cookies_msg_btn.addEventListener("click", function () {
+  cookiesMsg.classList.add("hide");
+});
 
 //scroll up when u click on home (footer navigation)
 const scroll_up = document.querySelector(".scroll-up");
