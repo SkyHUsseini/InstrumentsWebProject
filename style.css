@@ -835,3 +835,14 @@ a {
   align-self: center;
   cursor: pointer;
 }
+/*for revealing sections on scroll*/
+.section,
+.textReveal {
+  transition: transform 750ms, opacity 750ms;
+}
+.section--hidden,
+.text--hidden {
+  opacity: 0;
+  transform: translateY(8rem);
+}
+
