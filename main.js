@@ -12,6 +12,10 @@ const modal = document.querySelector(".modal");
 const overlay = document.querySelector(".overlay");
 const body = document.querySelector("body");
 
+
+const allSections = document.querySelectorAll(".section");
+const allText = document.querySelectorAll(".textReveal");
+
 playBtn?.addEventListener("click", function () {
   if (videoOne.paused) videoOne.play();
   else videoOne.pause();
@@ -72,4 +76,34 @@ flipDivContainer.addEventListener("click", function (e) {
   console.log(parent);
   parent.classList.toggle("grid-area-flip");
   clicked.style.transform = "scale(1.01)";
+});
+
+//REVEAL SECTIONS ON SCROLL
+
+const revealSection = function (entries, observer) {
+  const [entry] = entries;
+
+  //remove the section--hidden from the target section
+  if (!entry.isIntersecting) return;
+
+  entry.target.classList.remove("section--hidden");
+  entry.target.classList.remove("text--hidden");
+
+  observer.unobserve(entry.target);
+};
+
+const obsOptions = {
+  root: null,
+  threshold: 0.15,
+};
+const revealObserver = new IntersectionObserver(revealSection, obsOptions);
+
+allSections.forEach(function (section) {
+  revealObserver.observe(section);
+  section.classList.add("section--hidden");
+});
+// for textReveal
+allText.forEach(function (text) {
+  revealObserver.observe(text);
+  text.classList.add("text--hidden");
 });
