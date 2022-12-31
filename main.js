@@ -12,7 +12,6 @@ const modal = document.querySelector(".modal");
 const overlay = document.querySelector(".overlay");
 const body = document.querySelector("body");
 
-
 const allSections = document.querySelectorAll(".section");
 const allText = document.querySelectorAll(".textReveal");
 
@@ -21,6 +20,11 @@ playBtn?.addEventListener("click", function () {
   else videoOne.pause();
 });
 
+//open modal
+// const openModal = function () {
+//   modal.classList.remove("hide");
+//   overlay.classList.remove("hide");
+// };
 
 const showCloseModal = function () {
   modal.classList.toggle("hide");
@@ -36,21 +40,27 @@ const closeModal = function () {
 navToggle.addEventListener("click", showCloseModal);
 overlay.addEventListener("click", closeModal);
 
+// navToggleBtns.forEach(function (btn) {
+//   btn.addEventListener("click", showCloseModal);
+// });
 
-//add cookies msg
-const cookiesMsg = document.createElement("div");
-cookiesMsg.classList.add("cookies-msg");
-cookiesMsg.innerHTML =
-  "This website uses cookies for improved functionality <br> <button class= 'cookies-msg-btn'>Ok</button>";
+// .addEventListener("click", showCloseModal);
+// overlay.addEventListener("click", closeModal);
 
-// cookiesMsg.append(primaryHeader);
-body.append(cookiesMsg);
-console.log(cookiesMsg);
+// //add cookies msg
+// const cookiesMsg = document.createElement("div");
+// cookiesMsg.classList.add("cookies-msg");
+// cookiesMsg.innerHTML =
+//   "This website uses cookies for improved functionality <br> <button class= 'cookies-msg-btn'>Ok</button>";
 
-const cookies_msg_btn = document.querySelector(".cookies-msg-btn");
-cookies_msg_btn.addEventListener("click", function () {
-  cookiesMsg.classList.add("hide");
-});
+// // cookiesMsg.append(primaryHeader);
+// body.append(cookiesMsg);
+// console.log(cookiesMsg);
+
+// const cookies_msg_btn = document.querySelector(".cookies-msg-btn");
+// cookies_msg_btn.addEventListener("click", function () {
+//   cookiesMsg.classList.add("hide");
+// });
 
 //scroll up when u click on home (footer navigation)
 const scroll_up = document.querySelector(".scroll-up");
@@ -64,21 +74,19 @@ scroll_up.addEventListener("click", function (e) {
 const flipDivContainer = document.querySelector(".flip-div-container");
 const flipDivs = document.querySelectorAll(".flip-div");
 
-flipDivContainer.addEventListener("click", function (e) {
+flipDivContainer?.addEventListener("click", function (e) {
   e.preventDefault();
   const clicked = e.target.closest(".flip-div");
-  console.log(e.target.closest(".flip-div"));
 
   if (!clicked) return;
 
   //remove flip class from container
   const parent = clicked.parentElement;
-  console.log(parent);
   parent.classList.toggle("grid-area-flip");
   clicked.style.transform = "scale(1.01)";
 });
 
-/REVEAL SECTIONS ON SCROLL
+//REVEAL SECTIONS ON SCROLL
 
 const revealSection = function (entries, observer) {
   const [entry] = entries;
