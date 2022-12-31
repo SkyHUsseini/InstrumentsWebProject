@@ -78,7 +78,7 @@ flipDivContainer.addEventListener("click", function (e) {
   clicked.style.transform = "scale(1.01)";
 });
 
-//REVEAL SECTIONS ON SCROLL
+/REVEAL SECTIONS ON SCROLL
 
 const revealSection = function (entries, observer) {
   const [entry] = entries;
@@ -102,8 +102,47 @@ allSections.forEach(function (section) {
   revealObserver.observe(section);
   section.classList.add("section--hidden");
 });
+
 // for textReveal
 allText.forEach(function (text) {
   revealObserver.observe(text);
   text.classList.add("text--hidden");
 });
+
+//SLIDER COMPONENT
+const slides = document.querySelectorAll(".slide");
+const slider = document.querySelector(".slider");
+const btnLeft = document.querySelector(".slider__btn--left");
+const btnRight = document.querySelector(".slider__btn--right");
+
+//default
+slides.forEach(function (s, i) {
+  s.style.transform = `translateX(${100 * i}%)`;
+});
+
+let currSlide = 0;
+let maxSlide = slides.length;
+console.log(maxSlide);
+
+const nextSlide = function () {
+  if (currSlide === maxSlide - 1) {
+    currSlide = 0;
+  } else {
+    currSlide++;
+  }
+  slides.forEach(function (s, i) {
+    s.style.transform = `translateX(${100 * (i - currSlide)}%)`;
+  });
+};
+const prevSlide = function () {
+  if (currSlide === 0) {
+    currSlide = maxSlide - 1;
+  } else {
+    currSlide--;
+  }
+  slides.forEach(function (s, i) {
+    s.style.transform = `translateX(${100 * (i - currSlide)}%)`;
+  });
+};
+btnRight.addEventListener("click", nextSlide);
+btnLeft.addEventListener("click", prevSlide);
